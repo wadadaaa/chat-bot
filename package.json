@@ -22,8 +22,12 @@
     "prettier": "^2.0.5"
   },
   "dependencies": {
+    "api-ai-javascript": "^2.0.0-beta.21",
+    "milligram": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
     "styled-components": "^5.1.0"
   }
 }

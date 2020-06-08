@@ -1,36 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import styled from 'styled-components'
-
-
-const Header = styled.h1`
-  cursor: pointer;
-  text-align: center;
-  font-weight: 900;
-  font-size: 1.98818rem;
-  line-height: 2.625rem;
-  font-family: Montserrat,sans-serif;
-  text-rendering: optimizeLegibility;
-  color: #fff;
-`;
-
-const Aside = styled.aside`
-  text-align: center;
-  color: #ffa7c4;
-  font-weight: 500;
-  font-size: 20px;
-  font-family: nunito,roboto,proxima-nova,proxima nova,sans-serif;
-`;
+import "milligram";
+import { Provider, useSelector, useDispatch } from "react-redux";
+import { store, sendMessage } from "./chat";
 
 const App = () => {
+  const { feed } = useSelector((state) => ({ feed: state }));
+  const dispatch = useDispatch();
   return (
     <div>
-        <Header>
-          React Starter
-        </Header>
-        <Aside>Happy hacking!</Aside>
+      <h1>🤖 Chat bot with attitude!</h1>
+      <ul>
+        {feed.map((entry) => (
+          <li key={entry.text}>{entry.text}</li>
+        ))}
+      </ul>
+      <input
+        type="text"
+        onKeyDown={(e) =>
+          e.keyCode === 13 ? dispatch(sendMessage(e.target.value)) : ""
+        }
+      />
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+export default App;
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
