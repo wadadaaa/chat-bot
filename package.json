@@ -2,7 +2,7 @@
   "name": "react-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "homepage": ".",
   "scripts": {
     "dev": "parcel src/index.html",
