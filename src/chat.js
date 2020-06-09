@@ -31,6 +31,7 @@ const messageMiddleware = () => (next) => (action) => {
 const initState = [
   {
     text: "Hey",
+    sender: "bot"
   },
 ];
 
